@@ -1,0 +1,1731 @@
+{
+  "dataset_videos": 1650,
+  "metadata_duration_hours": 128.07888888888888,
+  "metadata_estimated_frames": 12984759.15688942,
+  "fps_required_for_36_hours": 100.19104287723317,
+  "frame_weights": {
+    "landscape_16_9": 11589093.04123526,
+    "other": 1044010.8114247434,
+    "portrait": 351655.3042294153
+  },
+  "sample_unique_videos": 24,
+  "sample_shards": 19,
+  "projected_parquet_read_seconds": 36.004106928948275,
+  "configurations": [
+    {
+      "half": false,
+      "batch": 16,
+      "sample_frames": 13652,
+      "sample_video_seconds": 479.96474498665316,
+      "sample_elapsed_seconds": 151.7368912630002,
+      "projected_hours": 36.924266019966524,
+      "weighted_effective_fps": 97.68312094897166,
+      "bootstrap_95_percent_hours": [
+        35.194424889566605,
+        39.03379812690323
+      ],
+      "planning_hours_20_percent_margin": 44.309119223959826,
+      "peak_pytorch_allocated_gib": 9.544844627380371,
+      "group_fps": {
+        "landscape_16_9": 102.66265509965976,
+        "other": 67.3064609826976,
+        "portrait": 78.23490111461658
+      }
+    },
+    {
+      "half": true,
+      "batch": 32,
+      "sample_frames": 13652,
+      "sample_video_seconds": 479.96474498665316,
+      "sample_elapsed_seconds": 113.24146160900045,
+      "projected_hours": 25.905393064724674,
+      "weighted_effective_fps": 139.23268929248067,
+      "bootstrap_95_percent_hours": [
+        23.124202781620028,
+        29.089967554165924
+      ],
+      "planning_hours_20_percent_margin": 31.086471677669607,
+      "peak_pytorch_allocated_gib": 2.331730365753174,
+      "group_fps": {
+        "landscape_16_9": 152.13441250472226,
+        "other": 78.4202932952195,
+        "portrait": 94.1835851270845
+      }
+    }
+  ],
+  "sample_fp16_vs_batched_fp32": {
+    "complete_sample_seconds": 456,
+    "object_micro_f1": 0.9970238095238095,
+    "people_exact_fraction": 1.0,
+    "people_within_one_fraction": 1.0,
+    "note": "Cross-precision spot check only; not validation against the grader reference."
+  },
+  "longer_clip_checks": [
+    {
+      "frames": 1439,
+      "elapsed_seconds": 10.906140897999876,
+      "fps": 131.94401332774862,
+      "prediction_seconds": 10.228575486999944,
+      "sample_video_seconds": 60.01829166666667,
+      "group": "landscape_16_9",
+      "file": "train-00036-of-01357.parquet",
+      "row": 16,
+      "output_seconds": 61
+    },
+    {
+      "frames": 1500,
+      "elapsed_seconds": 10.995731131999946,
+      "fps": 136.41657675992795,
+      "prediction_seconds": 10.225008180000941,
+      "sample_video_seconds": 60.00000000000001,
+      "group": "landscape_16_9",
+      "file": "train-00014-of-01357.parquet",
+      "row": 29,
+      "output_seconds": 60
+    },
+    {
+      "frames": 1800,
+      "elapsed_seconds": 11.851867241000036,
+      "fps": 151.874802796738,
+      "prediction_seconds": 11.259575312999687,
+      "sample_video_seconds": 59.99999999999997,
+      "group": "landscape_16_9",
+      "file": "train-00037-of-01357.parquet",
+      "row": 23,
+      "output_seconds": 60
+    }
+  ],
+  "environment": {
+    "date_pkt": "2026-11-20",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_vram_mib": 12288,
+    "cpu": "AMD Ryzen 5 8400F, 6 cores / 12 threads",
+    "ram_gb": 16,
+    "python": "3.11.18",
+    "torch": "2.14.1+cu126",
+    "ultralytics": "8.4.159",
+    "pyav": "16.0.1",
+    "kernel": "7.3.4-arch1-2",
+    "torch_threads": 4,
+    "opencv_threads": 1,
+    "decoder_threads": 2,
+    "cudnn_benchmark": true
+  },
+  "model": {
+    "filename": "yolo11l.pt",
+    "source": "https://huggingface.co/Ultralytics/YOLO11/resolve/main/yolo11l.pt",
+    "sha256": "9ebd0e09d59811db4b1d61e2bc6730649608b1ac47f8dd01e2da6bca7c20023f",
+    "imgsz": 640,
+    "conf": 0.4,
+    "iou": 0.7,
+    "rect": true,
+    "agnostic_nms": false,
+    "frame_skipping": false
+  },
+  "scope": {
+    "budget_hours": 36,
+    "budget_includes": [
+      "implementation",
+      "testing",
+      "full_dataset_processing"
+    ],
+    "submission_run_py_modified": false,
+    "full_dataset_processed": false,
+    "temporary_scripts": [
+      "/tmp/alethia_benchmark.py",
+      "/tmp/alethia_benchmark_summary.py",
+      "/tmp/alethia_benchmark_holdout.py"
+    ],
+    "timing_caveats": [
+      "Projected frame count comes from metadata, not decoding all 1650 videos.",
+      "Selected video bytes and sample output used temporary RAM-backed storage; Parquet extraction was timed separately on the actual dataset filesystem.",
+      "Checkpoint loading/warmup and final gzip are outside clip timers.",
+      "20% scheduling headroom is a planning allowance, not a runtime guarantee.",
+      "FP16 comparison uses batched FP32, not the grader reference.",
+      "Longer checks deliberately include two slower landscape videos and a median-throughput video, so they are not an additional unbiased sample."
+    ]
+  },
+  "tuning": [
+    {
+      "frames": 240,
+      "elapsed_seconds": 2.824523270999862,
+      "fps": 84.97009122358608,
+      "prediction_seconds": 2.7043877409994366,
+      "sample_video_seconds": 7.999999999999995,
+      "group": "landscape_16_9",
+      "file": "train-00018-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 9,
+      "batch": 1,
+      "half": false,
+      "peak_gib": 0.19463491439819336
+    },
+    {
+      "frames": 240,
+      "elapsed_seconds": 2.2504161760000443,
+      "fps": 106.64694049017326,
+      "prediction_seconds": 2.1742541870000878,
+      "sample_video_seconds": 7.999999999999995,
+      "group": "landscape_16_9",
+      "file": "train-00018-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 9,
+      "batch": 8,
+      "half": false,
+      "peak_gib": 0.6761431694030762
+    },
+    {
+      "frames": 240,
+      "elapsed_seconds": 2.1909393589999127,
+      "fps": 109.5420551071535,
+      "prediction_seconds": 2.1193675160002385,
+      "sample_video_seconds": 7.999999999999995,
+      "group": "landscape_16_9",
+      "file": "train-00018-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 9,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 1.2264399528503418
+    },
+    {
+      "frames": 240,
+      "elapsed_seconds": 1.4362798590000239,
+      "fps": 167.0983537756314,
+      "prediction_seconds": 1.3596182239996324,
+      "sample_video_seconds": 7.999999999999995,
+      "group": "landscape_16_9",
+      "file": "train-00018-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 9,
+      "batch": 8,
+      "half": true,
+      "peak_gib": 0.294583797454834
+    },
+    {
+      "frames": 240,
+      "elapsed_seconds": 1.3912643999999545,
+      "fps": 172.50495304847004,
+      "prediction_seconds": 1.3174981450008545,
+      "sample_video_seconds": 7.999999999999995,
+      "group": "landscape_16_9",
+      "file": "train-00018-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 9,
+      "batch": 16,
+      "half": true,
+      "peak_gib": 0.5106520652770996
+    },
+    {
+      "frames": 240,
+      "elapsed_seconds": 1.3147394389998226,
+      "fps": 182.54567626158538,
+      "prediction_seconds": 1.2458509420002883,
+      "sample_video_seconds": 7.999999999999995,
+      "group": "landscape_16_9",
+      "file": "train-00018-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 9,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 0.9437651634216309
+    }
+  ],
+  "selection": {
+    "selected": [
+      {
+        "file": "train-00018-of-01357.parquet",
+        "row": 1,
+        "duration_seconds": 490,
+        "resolution": "640x360",
+        "fps": 30.0,
+        "group": "landscape_16_9",
+        "offset": 63.100625679988525,
+        "path": "/tmp/alethia-benchmark/train-00018-of-01357.parquet__1.mp4"
+      },
+      {
+        "file": "train-00037-of-01357.parquet",
+        "row": 23,
+        "duration_seconds": 397,
+        "resolution": "640x360",
+        "fps": 30.0,
+        "group": "landscape_16_9",
+        "offset": 341.77878230871073,
+        "path": "/tmp/alethia-benchmark/train-00037-of-01357.parquet__23.mp4"
+      },
+      {
+        "file": "train-00029-of-01357.parquet",
+        "row": 24,
+        "duration_seconds": 153,
+        "resolution": "640x360",
+        "fps": 30.0,
+        "group": "landscape_16_9",
+        "offset": 102.79416435822907,
+        "path": "/tmp/alethia-benchmark/train-00029-of-01357.parquet__24.mp4"
+      },
+      {
+        "file": "train-00020-of-01357.parquet",
+        "row": 24,
+        "duration_seconds": 558,
+        "resolution": "640x360",
+        "fps": 29.97002997002997,
+        "group": "landscape_16_9",
+        "offset": 62.098372042051494,
+        "path": "/tmp/alethia-benchmark/train-00020-of-01357.parquet__24.mp4"
+      },
+      {
+        "file": "train-00045-of-01357.parquet",
+        "row": 14,
+        "duration_seconds": 373,
+        "resolution": "640x360",
+        "fps": 29.97002997002997,
+        "group": "landscape_16_9",
+        "offset": 283.93000538468453,
+        "path": "/tmp/alethia-benchmark/train-00045-of-01357.parquet__14.mp4"
+      },
+      {
+        "file": "train-00021-of-01357.parquet",
+        "row": 21,
+        "duration_seconds": 651,
+        "resolution": "640x360",
+        "fps": 23.976023976023978,
+        "group": "landscape_16_9",
+        "offset": 407.1411779544498,
+        "path": "/tmp/alethia-benchmark/train-00021-of-01357.parquet__21.mp4"
+      },
+      {
+        "file": "train-00016-of-01357.parquet",
+        "row": 0,
+        "duration_seconds": 443,
+        "resolution": "640x360",
+        "fps": 29.97002997002997,
+        "group": "landscape_16_9",
+        "offset": 31.271404382874525,
+        "path": "/tmp/alethia-benchmark/train-00016-of-01357.parquet__0.mp4"
+      },
+      {
+        "file": "train-00012-of-01357.parquet",
+        "row": 29,
+        "duration_seconds": 527,
+        "resolution": "640x360",
+        "fps": 29.97002997002997,
+        "group": "landscape_16_9",
+        "offset": 148.70935427085098,
+        "path": "/tmp/alethia-benchmark/train-00012-of-01357.parquet__29.mp4"
+      },
+      {
+        "file": "train-00014-of-01357.parquet",
+        "row": 29,
+        "duration_seconds": 151,
+        "resolution": "640x360",
+        "fps": 25.0,
+        "group": "landscape_16_9",
+        "offset": 128.38595771603488,
+        "path": "/tmp/alethia-benchmark/train-00014-of-01357.parquet__29.mp4"
+      },
+      {
+        "file": "train-00004-of-01357.parquet",
+        "row": 1,
+        "duration_seconds": 121,
+        "resolution": "640x360",
+        "fps": 25.0,
+        "group": "landscape_16_9",
+        "offset": 91.69524044603585,
+        "path": "/tmp/alethia-benchmark/train-00004-of-01357.parquet__1.mp4"
+      },
+      {
+        "file": "train-00036-of-01357.parquet",
+        "row": 0,
+        "duration_seconds": 632,
+        "resolution": "640x360",
+        "fps": 25.0,
+        "group": "landscape_16_9",
+        "offset": 215.9485247230503,
+        "path": "/tmp/alethia-benchmark/train-00036-of-01357.parquet__0.mp4"
+      },
+      {
+        "file": "train-00012-of-01357.parquet",
+        "row": 14,
+        "duration_seconds": 633,
+        "resolution": "640x360",
+        "fps": 29.97,
+        "group": "landscape_16_9",
+        "offset": 176.3590663785124,
+        "path": "/tmp/alethia-benchmark/train-00012-of-01357.parquet__14.mp4"
+      },
+      {
+        "file": "train-00036-of-01357.parquet",
+        "row": 16,
+        "duration_seconds": 537,
+        "resolution": "640x360",
+        "fps": 23.976023976023978,
+        "group": "landscape_16_9",
+        "offset": 98.36793248258513,
+        "path": "/tmp/alethia-benchmark/train-00036-of-01357.parquet__16.mp4"
+      },
+      {
+        "file": "train-00037-of-01357.parquet",
+        "row": 13,
+        "duration_seconds": 377,
+        "resolution": "640x360",
+        "fps": 30.0,
+        "group": "landscape_16_9",
+        "offset": 66.16077517757174,
+        "path": "/tmp/alethia-benchmark/train-00037-of-01357.parquet__13.mp4"
+      },
+      {
+        "file": "train-00042-of-01357.parquet",
+        "row": 6,
+        "duration_seconds": 255,
+        "resolution": "640x360",
+        "fps": 29.97002997002997,
+        "group": "landscape_16_9",
+        "offset": 29.148145108881305,
+        "path": "/tmp/alethia-benchmark/train-00042-of-01357.parquet__6.mp4"
+      },
+      {
+        "file": "train-00047-of-01357.parquet",
+        "row": 17,
+        "duration_seconds": 444,
+        "resolution": "640x360",
+        "fps": 30.0,
+        "group": "landscape_16_9",
+        "offset": 45.394186338874476,
+        "path": "/tmp/alethia-benchmark/train-00047-of-01357.parquet__17.mp4"
+      },
+      {
+        "file": "train-00013-of-01357.parquet",
+        "row": 15,
+        "duration_seconds": 38,
+        "resolution": "360x640",
+        "fps": 25.0,
+        "group": "portrait",
+        "offset": 2.4466879017003267,
+        "path": "/tmp/alethia-benchmark/train-00013-of-01357.parquet__15.mp4"
+      },
+      {
+        "file": "train-00033-of-01357.parquet",
+        "row": 32,
+        "duration_seconds": 36,
+        "resolution": "360x640",
+        "fps": 29.97002997002997,
+        "group": "portrait",
+        "offset": 7.478492082887868,
+        "path": "/tmp/alethia-benchmark/train-00033-of-01357.parquet__32.mp4"
+      },
+      {
+        "file": "train-00027-of-01357.parquet",
+        "row": 4,
+        "duration_seconds": 136,
+        "resolution": "360x640",
+        "fps": 29.97002997002997,
+        "group": "portrait",
+        "offset": 111.81859370544534,
+        "path": "/tmp/alethia-benchmark/train-00027-of-01357.parquet__4.mp4"
+      },
+      {
+        "file": "train-00036-of-01357.parquet",
+        "row": 31,
+        "duration_seconds": 46,
+        "resolution": "352x640",
+        "fps": 29.97002997002997,
+        "group": "portrait",
+        "offset": 11.108650757856587,
+        "path": "/tmp/alethia-benchmark/train-00036-of-01357.parquet__31.mp4"
+      },
+      {
+        "file": "train-00007-of-01357.parquet",
+        "row": 10,
+        "duration_seconds": 534,
+        "resolution": "576x360",
+        "fps": 30.0,
+        "group": "other",
+        "offset": 70.4580227682228,
+        "path": "/tmp/alethia-benchmark/train-00007-of-01357.parquet__10.mp4"
+      },
+      {
+        "file": "train-00040-of-01357.parquet",
+        "row": 25,
+        "duration_seconds": 138,
+        "resolution": "640x296",
+        "fps": 25.0,
+        "group": "other",
+        "offset": 4.220504638900676,
+        "path": "/tmp/alethia-benchmark/train-00040-of-01357.parquet__25.mp4"
+      },
+      {
+        "file": "train-00039-of-01357.parquet",
+        "row": 14,
+        "duration_seconds": 456,
+        "resolution": "480x360",
+        "fps": 29.97002997002997,
+        "group": "other",
+        "offset": 146.10777860229422,
+        "path": "/tmp/alethia-benchmark/train-00039-of-01357.parquet__14.mp4"
+      },
+      {
+        "file": "train-00040-of-01357.parquet",
+        "row": 12,
+        "duration_seconds": 275,
+        "resolution": "482x360",
+        "fps": 30.0,
+        "group": "other",
+        "offset": 23.012492292260067,
+        "path": "/tmp/alethia-benchmark/train-00040-of-01357.parquet__12.mp4"
+      }
+    ],
+    "parquet_loads": [
+      {
+        "file": "train-00004-of-01357.parquet",
+        "seconds": 0.7959221359999447,
+        "bytes": 490551314
+      },
+      {
+        "file": "train-00007-of-01357.parquet",
+        "seconds": 0.582978766999986,
+        "bytes": 411972598
+      },
+      {
+        "file": "train-00012-of-01357.parquet",
+        "seconds": 0.7768217160000859,
+        "bytes": 645693598
+      },
+      {
+        "file": "train-00013-of-01357.parquet",
+        "seconds": 0.674016599999959,
+        "bytes": 439783052
+      },
+      {
+        "file": "train-00014-of-01357.parquet",
+        "seconds": 0.6969274880000285,
+        "bytes": 466689461
+      },
+      {
+        "file": "train-00016-of-01357.parquet",
+        "seconds": 1.0991453019998971,
+        "bytes": 563882414
+      },
+      {
+        "file": "train-00018-of-01357.parquet",
+        "seconds": 0.7513279810000313,
+        "bytes": 530730404
+      },
+      {
+        "file": "train-00020-of-01357.parquet",
+        "seconds": 0.6648293420000755,
+        "bytes": 456603883
+      },
+      {
+        "file": "train-00021-of-01357.parquet",
+        "seconds": 0.8457037290002063,
+        "bytes": 574377390
+      },
+      {
+        "file": "train-00027-of-01357.parquet",
+        "seconds": 0.5766614100000425,
+        "bytes": 463236471
+      },
+      {
+        "file": "train-00029-of-01357.parquet",
+        "seconds": 0.7709010650000891,
+        "bytes": 539679919
+      },
+      {
+        "file": "train-00033-of-01357.parquet",
+        "seconds": 0.7738231519999772,
+        "bytes": 538059858
+      },
+      {
+        "file": "train-00036-of-01357.parquet",
+        "seconds": 0.6434652820000792,
+        "bytes": 468459258
+      },
+      {
+        "file": "train-00037-of-01357.parquet",
+        "seconds": 0.609561438000128,
+        "bytes": 406112683
+      },
+      {
+        "file": "train-00039-of-01357.parquet",
+        "seconds": 0.6053148789999341,
+        "bytes": 475702980
+      },
+      {
+        "file": "train-00040-of-01357.parquet",
+        "seconds": 0.9672634160001508,
+        "bytes": 578912322
+      },
+      {
+        "file": "train-00042-of-01357.parquet",
+        "seconds": 0.5533841789999769,
+        "bytes": 409821751
+      },
+      {
+        "file": "train-00045-of-01357.parquet",
+        "seconds": 0.650759540999843,
+        "bytes": 466748078
+      },
+      {
+        "file": "train-00047-of-01357.parquet",
+        "seconds": 0.6427532099999098,
+        "bytes": 424557371
+      }
+    ]
+  },
+  "clip_measurements": [
+    {
+      "frames": 600,
+      "elapsed_seconds": 5.413862690999849,
+      "fps": 110.82660094011179,
+      "prediction_seconds": 5.225859597999488,
+      "sample_video_seconds": 19.999999999999996,
+      "group": "landscape_16_9",
+      "file": "train-00018-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 1.2264399528503418
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 5.550324485999909,
+      "fps": 108.10178783482567,
+      "prediction_seconds": 5.304951872000402,
+      "sample_video_seconds": 19.999999999999975,
+      "group": "landscape_16_9",
+      "file": "train-00037-of-01357.parquet",
+      "row": 23,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 1.2264399528503418
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 5.465114478000032,
+      "fps": 109.787270223765,
+      "prediction_seconds": 5.298829915000169,
+      "sample_video_seconds": 20.000000000000004,
+      "group": "landscape_16_9",
+      "file": "train-00029-of-01357.parquet",
+      "row": 24,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 1.2264399528503418
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 6.8827874360001715,
+      "fps": 87.02869376249397,
+      "prediction_seconds": 6.6774382720011545,
+      "sample_video_seconds": 19.986633333333323,
+      "group": "landscape_16_9",
+      "file": "train-00020-of-01357.parquet",
+      "row": 24,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 5.631456853999907,
+      "fps": 106.36679202727846,
+      "prediction_seconds": 5.312244505000535,
+      "sample_video_seconds": 19.986633333333316,
+      "group": "landscape_16_9",
+      "file": "train-00045-of-01357.parquet",
+      "row": 14,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 480,
+      "elapsed_seconds": 4.457118369,
+      "fps": 107.69289937159397,
+      "prediction_seconds": 4.240195531000609,
+      "sample_video_seconds": 20.02000000000001,
+      "group": "landscape_16_9",
+      "file": "train-00021-of-01357.parquet",
+      "row": 21,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 5.562703064000061,
+      "fps": 107.68146225106389,
+      "prediction_seconds": 5.308338710000271,
+      "sample_video_seconds": 19.98663333333333,
+      "group": "landscape_16_9",
+      "file": "train-00016-of-01357.parquet",
+      "row": 0,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 5.5219430829999965,
+      "fps": 108.65740392130738,
+      "prediction_seconds": 5.286690320999924,
+      "sample_video_seconds": 20.019999999999982,
+      "group": "landscape_16_9",
+      "file": "train-00012-of-01357.parquet",
+      "row": 29,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 6.013609919999908,
+      "fps": 83.14473446924333,
+      "prediction_seconds": 5.752081805000216,
+      "sample_video_seconds": 20.000000000000007,
+      "group": "landscape_16_9",
+      "file": "train-00014-of-01357.parquet",
+      "row": 29,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 4.637305548000086,
+      "fps": 107.82123257235729,
+      "prediction_seconds": 4.4570736319997195,
+      "sample_video_seconds": 20.000000000000007,
+      "group": "landscape_16_9",
+      "file": "train-00004-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 4.644877016999999,
+      "fps": 107.6454765476087,
+      "prediction_seconds": 4.3811803129997315,
+      "sample_video_seconds": 19.99999999999998,
+      "group": "landscape_16_9",
+      "file": "train-00036-of-01357.parquet",
+      "row": 0,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 5.595756405999964,
+      "fps": 107.04540307682647,
+      "prediction_seconds": 5.291734094001185,
+      "sample_video_seconds": 19.98665331998664,
+      "group": "landscape_16_9",
+      "file": "train-00012-of-01357.parquet",
+      "row": 14,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 8.752249717712402
+    },
+    {
+      "frames": 479,
+      "elapsed_seconds": 6.325121387000081,
+      "fps": 75.72977191939445,
+      "prediction_seconds": 6.0638456400001814,
+      "sample_video_seconds": 19.978291666666664,
+      "group": "landscape_16_9",
+      "file": "train-00036-of-01357.parquet",
+      "row": 16,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.395323753356934
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 5.4639479400000255,
+      "fps": 109.81070950686934,
+      "prediction_seconds": 5.308743367000034,
+      "sample_video_seconds": 20.000000000000004,
+      "group": "landscape_16_9",
+      "file": "train-00037-of-01357.parquet",
+      "row": 13,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.395323753356934
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 5.383777154999962,
+      "fps": 111.26017714973648,
+      "prediction_seconds": 5.164482773000827,
+      "sample_video_seconds": 19.98663333333333,
+      "group": "landscape_16_9",
+      "file": "train-00042-of-01357.parquet",
+      "row": 6,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.395323753356934
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 5.642051833000096,
+      "fps": 106.34429065160802,
+      "prediction_seconds": 5.303100962999224,
+      "sample_video_seconds": 19.999999999999996,
+      "group": "landscape_16_9",
+      "file": "train-00047-of-01357.parquet",
+      "row": 17,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.395323753356934
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 8.190148610000051,
+      "fps": 61.04895329854056,
+      "prediction_seconds": 7.8762872200004495,
+      "sample_video_seconds": 20.0,
+      "group": "portrait",
+      "file": "train-00013-of-01357.parquet",
+      "row": 15,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.475275039672852
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 7.006674253000028,
+      "fps": 85.4899169521871,
+      "prediction_seconds": 6.728108922999127,
+      "sample_video_seconds": 19.986633333333334,
+      "group": "portrait",
+      "file": "train-00033-of-01357.parquet",
+      "row": 32,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.475275039672852
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 5.626451628999803,
+      "fps": 106.46141467077402,
+      "prediction_seconds": 5.243584753000505,
+      "sample_video_seconds": 19.986633333333344,
+      "group": "portrait",
+      "file": "train-00027-of-01357.parquet",
+      "row": 4,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.475275039672852
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 8.549805390000074,
+      "fps": 70.17703592432234,
+      "prediction_seconds": 8.329517611000256,
+      "sample_video_seconds": 20.02,
+      "group": "portrait",
+      "file": "train-00036-of-01357.parquet",
+      "row": 31,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.475275039672852
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 9.75242399700005,
+      "fps": 61.523165951825554,
+      "prediction_seconds": 9.554716951000273,
+      "sample_video_seconds": 20.000000000000004,
+      "group": "other",
+      "file": "train-00007-of-01357.parquet",
+      "row": 10,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.498465061187744
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 7.179489902000114,
+      "fps": 69.64283073379717,
+      "prediction_seconds": 6.971899042001269,
+      "sample_video_seconds": 20.0,
+      "group": "other",
+      "file": "train-00040-of-01357.parquet",
+      "row": 25,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.498465061187744
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 10.506103635000045,
+      "fps": 57.10965937944486,
+      "prediction_seconds": 10.29589757799954,
+      "sample_video_seconds": 20.02000000000001,
+      "group": "other",
+      "file": "train-00039-of-01357.parquet",
+      "row": 14,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.544844627380371
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 6.7340361799999755,
+      "fps": 89.09961039146097,
+      "prediction_seconds": 6.608356975999868,
+      "sample_video_seconds": 20.0,
+      "group": "other",
+      "file": "train-00040-of-01357.parquet",
+      "row": 12,
+      "output_seconds": 21,
+      "batch": 16,
+      "half": false,
+      "peak_gib": 9.544844627380371
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 5.565686546000052,
+      "fps": 107.80341203929424,
+      "prediction_seconds": 5.384510557000112,
+      "sample_video_seconds": 19.999999999999996,
+      "group": "landscape_16_9",
+      "file": "train-00018-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 3.3709953279999354,
+      "fps": 177.98897406244387,
+      "prediction_seconds": 3.13328195400004,
+      "sample_video_seconds": 19.999999999999975,
+      "group": "landscape_16_9",
+      "file": "train-00037-of-01357.parquet",
+      "row": 23,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 3.3065641910000068,
+      "fps": 181.4572363763915,
+      "prediction_seconds": 3.146729365000283,
+      "sample_video_seconds": 20.000000000000004,
+      "group": "landscape_16_9",
+      "file": "train-00029-of-01357.parquet",
+      "row": 24,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 5.412761929999988,
+      "fps": 110.66439051754145,
+      "prediction_seconds": 5.216297879999729,
+      "sample_video_seconds": 19.986633333333323,
+      "group": "landscape_16_9",
+      "file": "train-00020-of-01357.parquet",
+      "row": 24,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 3.4360446230000434,
+      "fps": 174.32835301102912,
+      "prediction_seconds": 3.1242903970003226,
+      "sample_video_seconds": 19.986633333333316,
+      "group": "landscape_16_9",
+      "file": "train-00045-of-01357.parquet",
+      "row": 14,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 480,
+      "elapsed_seconds": 2.715872501000149,
+      "fps": 176.73878277541928,
+      "prediction_seconds": 2.5025886220000757,
+      "sample_video_seconds": 20.02000000000001,
+      "group": "landscape_16_9",
+      "file": "train-00021-of-01357.parquet",
+      "row": 21,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 3.350489909000089,
+      "fps": 178.77982512078776,
+      "prediction_seconds": 3.102108542000451,
+      "sample_video_seconds": 19.98663333333333,
+      "group": "landscape_16_9",
+      "file": "train-00016-of-01357.parquet",
+      "row": 0,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 3.3428685579999637,
+      "fps": 179.4865665789084,
+      "prediction_seconds": 3.1105135160005375,
+      "sample_video_seconds": 20.019999999999982,
+      "group": "landscape_16_9",
+      "file": "train-00012-of-01357.parquet",
+      "row": 29,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 4.8675756570000885,
+      "fps": 102.72054000453946,
+      "prediction_seconds": 4.612357064000207,
+      "sample_video_seconds": 20.000000000000007,
+      "group": "landscape_16_9",
+      "file": "train-00014-of-01357.parquet",
+      "row": 29,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 2.7779545370001415,
+      "fps": 179.98854673120036,
+      "prediction_seconds": 2.603578741999627,
+      "sample_video_seconds": 20.000000000000007,
+      "group": "landscape_16_9",
+      "file": "train-00004-of-01357.parquet",
+      "row": 1,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 2.78727407700012,
+      "fps": 179.3867363550192,
+      "prediction_seconds": 2.5304801910008337,
+      "sample_video_seconds": 19.99999999999998,
+      "group": "landscape_16_9",
+      "file": "train-00036-of-01357.parquet",
+      "row": 0,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 3.3851913900000454,
+      "fps": 176.94715925647913,
+      "prediction_seconds": 3.0902314719996866,
+      "sample_video_seconds": 19.98665331998664,
+      "group": "landscape_16_9",
+      "file": "train-00012-of-01357.parquet",
+      "row": 14,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.430835247039795
+    },
+    {
+      "frames": 479,
+      "elapsed_seconds": 5.371015413000123,
+      "fps": 89.18239162759019,
+      "prediction_seconds": 5.1103155349997,
+      "sample_video_seconds": 19.978291666666664,
+      "group": "landscape_16_9",
+      "file": "train-00036-of-01357.parquet",
+      "row": 16,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.8244085311889648
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 3.2237105789999987,
+      "fps": 186.1209265833415,
+      "prediction_seconds": 3.075536880000982,
+      "sample_video_seconds": 20.000000000000004,
+      "group": "landscape_16_9",
+      "file": "train-00037-of-01357.parquet",
+      "row": 13,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.8244085311889648
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 3.165420809000125,
+      "fps": 189.23234417897464,
+      "prediction_seconds": 2.953741179999497,
+      "sample_video_seconds": 19.98663333333333,
+      "group": "landscape_16_9",
+      "file": "train-00042-of-01357.parquet",
+      "row": 6,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.8244085311889648
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 3.433736364999959,
+      "fps": 174.73676957724365,
+      "prediction_seconds": 3.1026871149999806,
+      "sample_video_seconds": 19.999999999999996,
+      "group": "landscape_16_9",
+      "file": "train-00047-of-01357.parquet",
+      "row": 17,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.8244085311889648
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 7.668714272999978,
+      "fps": 65.19997775381994,
+      "prediction_seconds": 7.362047041999858,
+      "sample_video_seconds": 20.0,
+      "group": "portrait",
+      "file": "train-00013-of-01357.parquet",
+      "row": 15,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.8803057670593262
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 5.4778766189999715,
+      "fps": 109.34893968264514,
+      "prediction_seconds": 5.204016657999773,
+      "sample_video_seconds": 19.986633333333334,
+      "group": "portrait",
+      "file": "train-00033-of-01357.parquet",
+      "row": 32,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.8803057670593262
+    },
+    {
+      "frames": 599,
+      "elapsed_seconds": 3.432854249000002,
+      "fps": 174.49036765091034,
+      "prediction_seconds": 3.0516123570002947,
+      "sample_video_seconds": 19.986633333333344,
+      "group": "portrait",
+      "file": "train-00027-of-01357.parquet",
+      "row": 4,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.8803057670593262
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 7.819711006000034,
+      "fps": 76.72917829567133,
+      "prediction_seconds": 7.607027936999884,
+      "sample_video_seconds": 20.02,
+      "group": "portrait",
+      "file": "train-00036-of-01357.parquet",
+      "row": 31,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 1.8803057670593262
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 8.82084510300001,
+      "fps": 68.02069336825076,
+      "prediction_seconds": 8.630031680000002,
+      "sample_video_seconds": 20.000000000000004,
+      "group": "other",
+      "file": "train-00007-of-01357.parquet",
+      "row": 10,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 2.031437397003174
+    },
+    {
+      "frames": 500,
+      "elapsed_seconds": 6.8350097739999,
+      "fps": 73.15278493119055,
+      "prediction_seconds": 6.6303799049997,
+      "sample_video_seconds": 20.0,
+      "group": "other",
+      "file": "train-00040-of-01357.parquet",
+      "row": 25,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 2.031437397003174
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 9.688525421999884,
+      "fps": 61.928928693067235,
+      "prediction_seconds": 9.482003904000521,
+      "sample_video_seconds": 20.02000000000001,
+      "group": "other",
+      "file": "train-00039-of-01357.parquet",
+      "row": 14,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 2.331730365753174
+    },
+    {
+      "frames": 600,
+      "elapsed_seconds": 3.9847627499998453,
+      "fps": 150.57358182743084,
+      "prediction_seconds": 3.862681033999934,
+      "sample_video_seconds": 20.0,
+      "group": "other",
+      "file": "train-00040-of-01357.parquet",
+      "row": 12,
+      "output_seconds": 21,
+      "batch": 32,
+      "half": true,
+      "peak_gib": 2.331730365753174
+    }
+  ],
+  "gpu_telemetry": [
+    {
+      "timestamp": "2026/11/20 03:11:25.704",
+      "utilization.gpu [%]": "87 %",
+      "memory.used [MiB]": "2332 MiB",
+      "temperature.gpu": "69.53",
+      "power.draw [W]": "150.10 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:11:30.710",
+      "utilization.gpu [%]": "84 %",
+      "memory.used [MiB]": "2332 MiB",
+      "temperature.gpu": "69.78",
+      "power.draw [W]": "149.01 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:11:35.711",
+      "utilization.gpu [%]": "100 %",
+      "memory.used [MiB]": "2634 MiB",
+      "temperature.gpu": "69.97",
+      "power.draw [W]": "151.81 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:11:40.712",
+      "utilization.gpu [%]": "100 %",
+      "memory.used [MiB]": "2633 MiB",
+      "temperature.gpu": "70.44",
+      "power.draw [W]": "153.74 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:11:45.712",
+      "utilization.gpu [%]": "86 %",
+      "memory.used [MiB]": "2635 MiB",
+      "temperature.gpu": "70.53",
+      "power.draw [W]": "146.81 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:11:50.713",
+      "utilization.gpu [%]": "96 %",
+      "memory.used [MiB]": "2810 MiB",
+      "temperature.gpu": "70.16",
+      "power.draw [W]": "144.16 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:11:55.734",
+      "utilization.gpu [%]": "85 %",
+      "memory.used [MiB]": "2547 MiB",
+      "temperature.gpu": "70.41",
+      "power.draw [W]": "148.95 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:00.734",
+      "utilization.gpu [%]": "85 %",
+      "memory.used [MiB]": "2597 MiB",
+      "temperature.gpu": "70.03",
+      "power.draw [W]": "153.26 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:05.734",
+      "utilization.gpu [%]": "95 %",
+      "memory.used [MiB]": "2661 MiB",
+      "temperature.gpu": "64.25",
+      "power.draw [W]": "89.05 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:10.735",
+      "utilization.gpu [%]": "83 %",
+      "memory.used [MiB]": "2661 MiB",
+      "temperature.gpu": "69.97",
+      "power.draw [W]": "149.74 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:15.736",
+      "utilization.gpu [%]": "88 %",
+      "memory.used [MiB]": "2393 MiB",
+      "temperature.gpu": "70.00",
+      "power.draw [W]": "152.37 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:20.736",
+      "utilization.gpu [%]": "99 %",
+      "memory.used [MiB]": "2720 MiB",
+      "temperature.gpu": "66.12",
+      "power.draw [W]": "116.64 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:25.737",
+      "utilization.gpu [%]": "83 %",
+      "memory.used [MiB]": "2722 MiB",
+      "temperature.gpu": "69.97",
+      "power.draw [W]": "149.85 W",
+      "clocks.current.sm [MHz]": "1852 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:30.737",
+      "utilization.gpu [%]": "93 %",
+      "memory.used [MiB]": "3325 MiB",
+      "temperature.gpu": "65.31",
+      "power.draw [W]": "114.63 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:35.738",
+      "utilization.gpu [%]": "95 %",
+      "memory.used [MiB]": "3087 MiB",
+      "temperature.gpu": "66.62",
+      "power.draw [W]": "127.98 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:40.843",
+      "utilization.gpu [%]": "86 %",
+      "memory.used [MiB]": "2999 MiB",
+      "temperature.gpu": "69.66",
+      "power.draw [W]": "153.37 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:45.844",
+      "utilization.gpu [%]": "97 %",
+      "memory.used [MiB]": "1756 MiB",
+      "temperature.gpu": "68.94",
+      "power.draw [W]": "150.36 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:50.856",
+      "utilization.gpu [%]": "88 %",
+      "memory.used [MiB]": "3149 MiB",
+      "temperature.gpu": "70.50",
+      "power.draw [W]": "154.01 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:12:55.856",
+      "utilization.gpu [%]": "96 %",
+      "memory.used [MiB]": "2451 MiB",
+      "temperature.gpu": "69.06",
+      "power.draw [W]": "153.79 W",
+      "clocks.current.sm [MHz]": "1800 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:00.857",
+      "utilization.gpu [%]": "74 %",
+      "memory.used [MiB]": "2486 MiB",
+      "temperature.gpu": "68.16",
+      "power.draw [W]": "84.61 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:05.858",
+      "utilization.gpu [%]": "85 %",
+      "memory.used [MiB]": "2486 MiB",
+      "temperature.gpu": "69.66",
+      "power.draw [W]": "151.95 W",
+      "clocks.current.sm [MHz]": "1815 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:10.858",
+      "utilization.gpu [%]": "97 %",
+      "memory.used [MiB]": "1081 MiB",
+      "temperature.gpu": "71.78",
+      "power.draw [W]": "159.46 W",
+      "clocks.current.sm [MHz]": "1747 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:15.859",
+      "utilization.gpu [%]": "71 %",
+      "memory.used [MiB]": "2455 MiB",
+      "temperature.gpu": "70.69",
+      "power.draw [W]": "146.85 W",
+      "clocks.current.sm [MHz]": "1860 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:20.859",
+      "utilization.gpu [%]": "76 %",
+      "memory.used [MiB]": "2453 MiB",
+      "temperature.gpu": "71.19",
+      "power.draw [W]": "147.36 W",
+      "clocks.current.sm [MHz]": "1860 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:25.860",
+      "utilization.gpu [%]": "100 %",
+      "memory.used [MiB]": "2457 MiB",
+      "temperature.gpu": "71.56",
+      "power.draw [W]": "150.34 W",
+      "clocks.current.sm [MHz]": "1792 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:30.861",
+      "utilization.gpu [%]": "75 %",
+      "memory.used [MiB]": "2639 MiB",
+      "temperature.gpu": "70.25",
+      "power.draw [W]": "99.51 W",
+      "clocks.current.sm [MHz]": "1830 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:35.861",
+      "utilization.gpu [%]": "100 %",
+      "memory.used [MiB]": "2639 MiB",
+      "temperature.gpu": "71.53",
+      "power.draw [W]": "151.30 W",
+      "clocks.current.sm [MHz]": "1800 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:40.862",
+      "utilization.gpu [%]": "88 %",
+      "memory.used [MiB]": "2642 MiB",
+      "temperature.gpu": "69.34",
+      "power.draw [W]": "147.41 W",
+      "clocks.current.sm [MHz]": "1852 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:45.863",
+      "utilization.gpu [%]": "81 %",
+      "memory.used [MiB]": "2576 MiB",
+      "temperature.gpu": "71.25",
+      "power.draw [W]": "151.18 W",
+      "clocks.current.sm [MHz]": "1807 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:50.863",
+      "utilization.gpu [%]": "84 %",
+      "memory.used [MiB]": "2573 MiB",
+      "temperature.gpu": "70.34",
+      "power.draw [W]": "155.58 W",
+      "clocks.current.sm [MHz]": "1845 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:13:55.864",
+      "utilization.gpu [%]": "62 %",
+      "memory.used [MiB]": "1197 MiB",
+      "temperature.gpu": "69.66",
+      "power.draw [W]": "144.05 W",
+      "clocks.current.sm [MHz]": "1717 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:00.865",
+      "utilization.gpu [%]": "2 %",
+      "memory.used [MiB]": "1137 MiB",
+      "temperature.gpu": "66.00",
+      "power.draw [W]": "136.31 W",
+      "clocks.current.sm [MHz]": "1860 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:05.865",
+      "utilization.gpu [%]": "98 %",
+      "memory.used [MiB]": "1098 MiB",
+      "temperature.gpu": "72.12",
+      "power.draw [W]": "157.55 W",
+      "clocks.current.sm [MHz]": "1815 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:10.866",
+      "utilization.gpu [%]": "82 %",
+      "memory.used [MiB]": "2439 MiB",
+      "temperature.gpu": "69.31",
+      "power.draw [W]": "148.42 W",
+      "clocks.current.sm [MHz]": "1860 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:15.867",
+      "utilization.gpu [%]": "77 %",
+      "memory.used [MiB]": "2333 MiB",
+      "temperature.gpu": "69.56",
+      "power.draw [W]": "147.88 W",
+      "clocks.current.sm [MHz]": "1860 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:20.867",
+      "utilization.gpu [%]": "59 %",
+      "memory.used [MiB]": "1362 MiB",
+      "temperature.gpu": "66.56",
+      "power.draw [W]": "118.15 W",
+      "clocks.current.sm [MHz]": "1875 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:25.868",
+      "utilization.gpu [%]": "97 %",
+      "memory.used [MiB]": "1030 MiB",
+      "temperature.gpu": "71.41",
+      "power.draw [W]": "156.31 W",
+      "clocks.current.sm [MHz]": "1740 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:30.868",
+      "utilization.gpu [%]": "73 %",
+      "memory.used [MiB]": "2217 MiB",
+      "temperature.gpu": "68.06",
+      "power.draw [W]": "104.48 W",
+      "clocks.current.sm [MHz]": "1875 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:35.869",
+      "utilization.gpu [%]": "92 %",
+      "memory.used [MiB]": "2377 MiB",
+      "temperature.gpu": "68.34",
+      "power.draw [W]": "166.81 W",
+      "clocks.current.sm [MHz]": "1860 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:40.870",
+      "utilization.gpu [%]": "100 %",
+      "memory.used [MiB]": "2885 MiB",
+      "temperature.gpu": "69.97",
+      "power.draw [W]": "152.62 W",
+      "clocks.current.sm [MHz]": "1807 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:45.870",
+      "utilization.gpu [%]": "77 %",
+      "memory.used [MiB]": "2889 MiB",
+      "temperature.gpu": "69.09",
+      "power.draw [W]": "152.53 W",
+      "clocks.current.sm [MHz]": "1867 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:50.871",
+      "utilization.gpu [%]": "6 %",
+      "memory.used [MiB]": "540 MiB",
+      "temperature.gpu": "60.06",
+      "power.draw [W]": "49.23 W",
+      "clocks.current.sm [MHz]": "555 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:14:55.873",
+      "utilization.gpu [%]": "25 %",
+      "memory.used [MiB]": "540 MiB",
+      "temperature.gpu": "55.59",
+      "power.draw [W]": "20.87 W",
+      "clocks.current.sm [MHz]": "210 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:00.874",
+      "utilization.gpu [%]": "6 %",
+      "memory.used [MiB]": "539 MiB",
+      "temperature.gpu": "53.09",
+      "power.draw [W]": "20.80 W",
+      "clocks.current.sm [MHz]": "315 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:05.875",
+      "utilization.gpu [%]": "8 %",
+      "memory.used [MiB]": "539 MiB",
+      "temperature.gpu": "51.16",
+      "power.draw [W]": "19.33 W",
+      "clocks.current.sm [MHz]": "210 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:10.875",
+      "utilization.gpu [%]": "46 %",
+      "memory.used [MiB]": "540 MiB",
+      "temperature.gpu": "49.62",
+      "power.draw [W]": "19.59 W",
+      "clocks.current.sm [MHz]": "210 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:15.877",
+      "utilization.gpu [%]": "8 %",
+      "memory.used [MiB]": "540 MiB",
+      "temperature.gpu": "48.25",
+      "power.draw [W]": "18.90 W",
+      "clocks.current.sm [MHz]": "210 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:20.878",
+      "utilization.gpu [%]": "15 %",
+      "memory.used [MiB]": "775 MiB",
+      "temperature.gpu": "47.31",
+      "power.draw [W]": "19.55 W",
+      "clocks.current.sm [MHz]": "210 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:25.879",
+      "utilization.gpu [%]": "62 %",
+      "memory.used [MiB]": "2458 MiB",
+      "temperature.gpu": "59.44",
+      "power.draw [W]": "132.70 W",
+      "clocks.current.sm [MHz]": "1882 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:30.879",
+      "utilization.gpu [%]": "65 %",
+      "memory.used [MiB]": "2457 MiB",
+      "temperature.gpu": "62.34",
+      "power.draw [W]": "144.09 W",
+      "clocks.current.sm [MHz]": "1882 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:35.880",
+      "utilization.gpu [%]": "6 %",
+      "memory.used [MiB]": "1239 MiB",
+      "temperature.gpu": "60.69",
+      "power.draw [W]": "101.33 W",
+      "clocks.current.sm [MHz]": "1882 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:40.880",
+      "utilization.gpu [%]": "96 %",
+      "memory.used [MiB]": "2574 MiB",
+      "temperature.gpu": "64.56",
+      "power.draw [W]": "144.98 W",
+      "clocks.current.sm [MHz]": "1822 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:45.881",
+      "utilization.gpu [%]": "99 %",
+      "memory.used [MiB]": "1220 MiB",
+      "temperature.gpu": "61.72",
+      "power.draw [W]": "142.70 W",
+      "clocks.current.sm [MHz]": "1777 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:50.882",
+      "utilization.gpu [%]": "93 %",
+      "memory.used [MiB]": "2533 MiB",
+      "temperature.gpu": "65.41",
+      "power.draw [W]": "145.80 W",
+      "clocks.current.sm [MHz]": "1815 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:15:55.882",
+      "utilization.gpu [%]": "100 %",
+      "memory.used [MiB]": "2537 MiB",
+      "temperature.gpu": "68.19",
+      "power.draw [W]": "145.17 W",
+      "clocks.current.sm [MHz]": "1815 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:16:00.883",
+      "utilization.gpu [%]": "1 %",
+      "memory.used [MiB]": "539 MiB",
+      "temperature.gpu": "59.25",
+      "power.draw [W]": "49.63 W",
+      "clocks.current.sm [MHz]": "1837 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:16:05.884",
+      "utilization.gpu [%]": "10 %",
+      "memory.used [MiB]": "539 MiB",
+      "temperature.gpu": "54.41",
+      "power.draw [W]": "19.70 W",
+      "clocks.current.sm [MHz]": "210 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:16:10.884",
+      "utilization.gpu [%]": "9 %",
+      "memory.used [MiB]": "540 MiB",
+      "temperature.gpu": "52.00",
+      "power.draw [W]": "19.29 W",
+      "clocks.current.sm [MHz]": "210 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:16:15.885",
+      "utilization.gpu [%]": "5 %",
+      "memory.used [MiB]": "560 MiB",
+      "temperature.gpu": "50.97",
+      "power.draw [W]": "22.70 W",
+      "clocks.current.sm [MHz]": "315 MHz"
+    },
+    {
+      "timestamp": "2026/11/20 03:16:20.887",
+      "utilization.gpu [%]": "5 %",
+      "memory.used [MiB]": "539 MiB",
+      "temperature.gpu": "49.00",
+      "power.draw [W]": "18.95 W",
+      "clocks.current.sm [MHz]": "360 MHz"
+    }
+  ]
+}

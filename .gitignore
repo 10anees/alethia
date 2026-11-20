@@ -1,0 +1,8 @@
+AI_Engineering_TakeHome_Brief.pdf
+finevideo
+requirements.md
+yolo11l.pt
+results.jsonl
+*.journal
+__pycache__/
+test_run.py
